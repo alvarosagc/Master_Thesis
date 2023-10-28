@@ -1,0 +1,8 @@
+prefix=/home/alvarosantamaria/catkin_ws/devel
+
+Name: train_description
+Description: Description of train_description
+Version: 0.0.0
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 

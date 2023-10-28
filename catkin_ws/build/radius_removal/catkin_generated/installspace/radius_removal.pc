@@ -1,0 +1,8 @@
+prefix=/home/alvarosantamaria/catkin_ws/install
+
+Name: radius_removal
+Description: Description of radius_removal
+Version: 0.0.0
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 

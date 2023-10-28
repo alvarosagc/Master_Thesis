@@ -1,0 +1,8 @@
+prefix=/home/alvarosantamaria/catkin_ws/devel
+
+Name: experiment_hansi
+Description: Description of experiment_hansi
+Version: 0.0.0
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 

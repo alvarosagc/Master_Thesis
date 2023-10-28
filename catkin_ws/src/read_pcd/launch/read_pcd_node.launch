@@ -1,0 +1,4 @@
+<launch>
+<node pkg="read_pcd" type="read_pcd_node" name="read_pcd_node">
+</node>
+</launch>

@@ -1,0 +1,8 @@
+prefix=/home/alvarosantamaria/catkin_ws/devel
+
+Name: extraction_point_cloud
+Description: Description of extraction_point_cloud
+Version: 0.0.0
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 

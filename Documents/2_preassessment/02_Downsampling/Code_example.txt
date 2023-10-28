@@ -1,0 +1,3 @@
+https://stackoverflow.com/questions/49819248/which-pcl-filter-to-use-to-downsample-a-point-cloud
+https://pcl.gitbook.io/tutorial/part-1/part01-chapter02/part01-chapter02-downsampling-pcl-cpp
+https://programmer.ink/think/filtering-introduction-and-use-of-various-filters-in-pcl-continuous-update.html

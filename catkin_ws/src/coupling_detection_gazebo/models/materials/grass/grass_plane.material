@@ -1,0 +1,21 @@
+material GrassPlane/Image
+    {
+      technique
+      {
+        pass
+        {
+              
+            ambient .3 .3 .3 1
+            diffuse 0 0 0 1
+            specular 0.03 0.03 0.03 1 
+            emissive 0.9 0.9 0.9 1
+
+          texture_unit
+          {
+            texture grass_texture.png
+            scale .001 .001
+            filtering trilinear
+          }
+        }
+      }
+    }

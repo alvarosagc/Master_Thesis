@@ -1,0 +1,8 @@
+prefix=/home/alvarosantamaria/catkin_ws/install
+
+Name: correspondence_grouping
+Description: Description of correspondence_grouping
+Version: 0.0.0
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 

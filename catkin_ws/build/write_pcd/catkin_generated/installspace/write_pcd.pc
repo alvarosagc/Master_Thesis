@@ -1,0 +1,8 @@
+prefix=/home/alvarosantamaria/catkin_ws/install
+
+Name: write_pcd
+Description: Description of write_pcd
+Version: 0.0.0
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 

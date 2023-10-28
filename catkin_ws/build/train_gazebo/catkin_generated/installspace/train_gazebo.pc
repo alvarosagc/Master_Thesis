@@ -1,0 +1,8 @@
+prefix=/home/alvarosantamaria/catkin_ws/install
+
+Name: train_gazebo
+Description: Description of train_gazebo
+Version: 0.0.0
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 

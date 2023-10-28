@@ -1,0 +1,8 @@
+prefix=/home/alvarosantamaria/catkin_ws/devel
+
+Name: downsampling_voxel
+Description: Description of downsampling_voxel
+Version: 0.0.0
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 

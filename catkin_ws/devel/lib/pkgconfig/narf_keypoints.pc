@@ -1,0 +1,8 @@
+prefix=/home/alvarosantamaria/catkin_ws/devel
+
+Name: narf_keypoints
+Description: Description of narf_keypoints
+Version: 0.0.0
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 

@@ -1,0 +1,807 @@
+<?xml version="1.0"?>
+<robot name="flachwagen">
+    
+    <material name="silver">
+        <color rgba=".1 .25 .875 1"/>
+    </material>
+            
+    <!-- _______________________________________________ Body _______________________________________________ -->
+    <link name="base_link">
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0"/>
+            <geometry>
+                <mesh filename="package://coupling_detection_gazebo/models/meshes/Remms_Wagenkasten.dae" scale="1 1 1"/>
+            </geometry>
+            <material name="silver"/>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0" rpy="0 0 0"/>
+            <geometry>
+                <mesh filename="package://coupling_detection_gazebo/models/meshes/Remms_Wagenkasten.dae" scale="1 1 1"/>
+            </geometry>
+        </collision>
+        <inertial>
+            <origin xyz="0 0 0.7" rpy="0 0 0"/>
+            <mass value="11789"/>
+            <inertia ixx="10091" iyy="178052" izz="187990" ixy="0" ixz="0" iyz="0"/>
+        </inertial>
+    </link>
+    <gazebo reference="base_link">
+        <material>Gazebo/Signalblau</material>
+    </gazebo>
+    <!-- _______________________________________________ Coupling _______________________________________________ -->
+
+     <link name="couplerbase_link">
+         <visual>
+            <origin xyz="0.5 0 0" rpy="0 0 0"/>
+            <geometry>
+                <mesh filename="package://coupling_detection_gazebo/models/meshes/UIC-Haken.dae" scale="1 1 1"/>
+            </geometry>
+            <material name="silver"/>
+         </visual>
+         <collision name='coupling_collision'>
+            <origin xyz="0.5 0 0" rpy="0 0 0"/>
+            <geometry>
+                <mesh filename="package://coupling_detection_gazebo/models/meshes/UIC-Haken.dae" scale="1 1 1"/>
+            </geometry>
+		</collision>
+        <inertial>
+            <origin xyz=".575 0 0" rpy="0 0 0"/>
+            <mass value="40"/>
+            <inertia ixx="0.5" iyy=".5" izz=".8" ixy="0" ixz="0" iyz="0"/>
+        </inertial>
+     </link>
+
+    <gazebo reference="couplerbase_link">
+        <material>Gazebo/Graphitschwarz</material>
+    </gazebo> 
+
+    <joint name="couplerbase_joint" type="revolute">
+        <parent link="base_link"/>
+        <child link="couplerbase_link"/>
+        <origin rpy="0 0 0" xyz="5.89 0 0.535"/>
+        <limit lower="-.1" upper=".1" effort="1.0" velocity="0.5"/>
+        <axis xyz="0 0 1"/>
+        <dynamics damping="100"/>
+    </joint>   
+
+    <gazebo reference="couplerbase_joint">
+        <implicitSpringDamper>true</implicitSpringDamper>
+        <springStiffness>100</springStiffness>
+    </gazebo> 
+    
+    <link name="couplerbase2_link">
+         <visual>
+            <origin xyz="0.5 0 0" rpy="0 0 0"/>
+            <geometry>
+                <mesh filename="package://coupling_detection_gazebo/models/meshes/UIC-Haken.dae" scale="1 1 1"/>
+            </geometry>
+            <material name="silver"/>
+         </visual>
+         <collision name='coupling_collision'>
+            <origin xyz="0.5 0 0" rpy="0 0 0"/>
+            <geometry>
+                <mesh filename="package://coupling_detection_gazebo/models/meshes/UIC-Haken.dae" scale="1 1 1"/>
+            </geometry>
+		</collision>
+        <inertial>
+            	<origin xyz="0.575 0 0" rpy="0 0 0"/>
+            	<mass value="40"/>
+            <inertia ixx="0.5" iyy=".5" izz=".8" ixy="0" ixz="0" iyz="0"/>
+        </inertial>
+    </link>
+
+    <gazebo reference="couplerbase2_link">
+        <material>Gazebo/Graphitschwarz</material>
+    </gazebo> 
+
+    <joint name="couplerbase2_joint" type="revolute">
+        <parent link="base_link"/>
+        <child link="couplerbase2_link"/>
+        <origin rpy="0 0 3.141592654" xyz="-5.89 0 .535"/>
+        <limit lower="-.1" upper=".1" effort="1.0" velocity="0.5"/>
+        <axis xyz="0 0 1"/>
+        <dynamics damping="100"/>
+    </joint>  
+    
+    <gazebo reference="couplerbase2_joint">
+        <implicitSpringDamper>true</implicitSpringDamper>
+        <springStiffness>100</springStiffness>
+    </gazebo> 
+
+    <!-- _______________________________________________ Seitenpuffern _______________________________________________ -->
+
+    <link name="buffer11_link">
+         <visual>
+            <origin xyz="0 0 0" rpy="0 0 0"/>
+            <geometry>
+                <mesh filename="package://coupling_detection_gazebo/models/meshes/Puffer_Einzel.dae" scale="1 1 1"/>
+            </geometry>
+            <material name="silver"/>
+         </visual>
+         <collision name='buffer11_collision'>
+            <origin xyz="0 0 0" rpy="0 0 0"/>
+            <geometry>
+                <mesh filename="package://coupling_detection_gazebo/models/meshes/Puffer_Einzel.dae" scale="1 1 1"/>
+            </geometry>
+		</collision>
+        <inertial>
+            <origin xyz=".075 0 0" rpy="0 0 0"/>
+            <mass value="40"/>
+            <inertia ixx="0.5" iyy=".5" izz=".8" ixy="0" ixz="0" iyz="0"/>
+        </inertial>
+     </link>
+    
+    <gazebo reference="buffer11_link">
+        <material>Gazebo/Graphitschwarz</material>
+    </gazebo> 
+
+    <joint name="buffer11_joint" type="fixed">
+        <parent link="base_link"/>
+        <child link="buffer11_link"/>
+        <origin rpy="0 0 0" xyz="6.39 .875 0.52"/>
+    </joint>   
+
+    <link name="buffer12_link">
+         <visual>
+            <origin xyz="0 0 0" rpy="0 0 0"/>
+            <geometry>
+                <mesh filename="package://coupling_detection_gazebo/models/meshes/Puffer_Einzel.dae" scale="1 1 1"/>
+            </geometry>
+            <material name="silver"/>
+         </visual>
+         <collision name='buffer12_collision'>
+            <origin xyz="0 0 0" rpy="0 0 0"/>
+            <geometry>
+                <mesh filename="package://coupling_detection_gazebo/models/meshes/Puffer_Einzel.dae" scale="1 1 1"/>
+            </geometry>
+		</collision>
+        <inertial>
+            <origin xyz=".075 0 0" rpy="0 0 0"/>
+            <mass value="40"/>
+            <inertia ixx="0.5" iyy=".5" izz=".8" ixy="0" ixz="0" iyz="0"/>
+        </inertial>
+     </link>
+    
+    <gazebo reference="buffer12_link">
+        <material>Gazebo/Graphitschwarz</material>
+    </gazebo> 
+
+    <joint name="buffer12_joint" type="fixed">
+        <parent link="base_link"/>
+        <child link="buffer12_link"/>
+        <origin rpy="0 0 0" xyz="6.39 -.875 0.52"/>
+    </joint>   
+
+    <link name="buffer21_link">
+         <visual>
+            <origin xyz="0 0 0" rpy="0 0 0"/>
+            <geometry>
+                <mesh filename="package://coupling_detection_gazebo/models/meshes/Puffer_Einzel.dae" scale="1 1 1"/>
+            </geometry>
+            <material name="silver"/>
+         </visual>
+         <collision name='buffer21_collision'>
+            <origin xyz="0 0 0" rpy="0 0 0"/>
+            <geometry>
+                <mesh filename="package://coupling_detection_gazebo/models/meshes/Puffer_Einzel.dae" scale="1 1 1"/>
+            </geometry>
+		</collision>
+        <inertial>
+            <origin xyz=".075 0 0" rpy="0 0 0"/>
+            <mass value="40"/>
+            <inertia ixx="0.5" iyy=".5" izz=".8" ixy="0" ixz="0" iyz="0"/>
+        </inertial>
+     </link>
+    
+    <gazebo reference="buffer21_link">
+        <material>Gazebo/Graphitschwarz</material>
+    </gazebo> 
+
+    <joint name="buffer21_joint" type="fixed">
+        <parent link="base_link"/>
+        <child link="buffer21_link"/>
+        <origin rpy="0 0 3.141592654" xyz="-6.39 .875 0.52"/>
+    </joint>
+
+    <link name="buffer22_link">
+         <visual>
+            <origin xyz="0 0 0" rpy="0 0 0"/>
+            <geometry>
+                <mesh filename="package://coupling_detection_gazebo/models/meshes/Puffer_Einzel.dae" scale="1 1 1"/>
+            </geometry>
+            <material name="silver"/>
+         </visual>
+         <collision name='buffer22_collision'>
+            <origin xyz="0 0 0" rpy="0 0 0"/>
+            <geometry>
+                <mesh filename="package://coupling_detection_gazebo/models/meshes/Puffer_Einzel.dae" scale="1 1 1"/>
+            </geometry>
+		</collision>
+        <inertial>
+            <origin xyz=".075 0 0" rpy="0 0 0"/>
+            <mass value="40"/>
+            <inertia ixx="0.5" iyy=".5" izz=".8" ixy="0" ixz="0" iyz="0"/>
+        </inertial>
+     </link>
+    
+    <gazebo reference="buffer22_link">
+        <material>Gazebo/Graphitschwarz</material>
+    </gazebo> 
+
+    <joint name="buffer22_joint" type="fixed">
+        <parent link="base_link"/>
+        <child link="buffer22_link"/>
+        <origin rpy="0 0 3.141592654" xyz="-6.39 -.875 0.52"/>
+    </joint>
+       
+
+    <!-- _______________________________________________ Drehgestell vorne _______________________________________________ -->
+    <link name="front_bogie_link">
+        <visual>
+            <origin xyz="0 0 -0.4" rpy="0 0 0"/>
+            <geometry>
+                <mesh filename="package://coupling_detection_gazebo/models/meshes/Y25_DG_Rahmen.dae" scale="1 1 1"/>
+            </geometry>
+            <material name="silver"/>
+        </visual>
+        <collision>
+            <origin xyz="0 0 -0.4" rpy="0 0 0"/>
+            <geometry>
+                <mesh filename="package://coupling_detection_gazebo/models/meshes/Y25_DG_Rahmen.dae" scale="1 1 1"/>
+            </geometry>
+        </collision>
+        <inertial>
+            <origin xyz="0 0 -0.28" rpy="0 0 0"/>
+            <mass value="2228"/>
+            <inertia ixx="1681" iyy="1691" izz="3270" ixy="0" ixz="0" iyz="0"/>
+        </inertial>
+    </link>
+    
+    <joint name="front_bogie_joint" type="revolute">
+        <axis xyz="0 0 1"/>
+        <limit lower="-.1745" upper=".1745" effort="1.0" velocity="0.5"/>
+        <parent link="base_link"/>
+        <child link="front_bogie_link"/>
+        <origin rpy="0 0 0" xyz="4.5 0 .4"/>
+    </joint>
+    
+    <gazebo reference="front_bogie_link">
+        <mu1>0</mu1>
+        <mu2>0</mu2>
+        <material>Gazebo/Grey</material>
+    </gazebo>
+    
+    <!-- _______________________________________________ DG vorne, Radsatz vorne _______________________________________________ -->
+    <link name="front_bogie_axle1_link">
+        <visual>
+            <origin xyz="0 0 0" rpy="1.570796 0 0"/>
+            <geometry>
+                <mesh filename="package://coupling_detection_gazebo/models/meshes/Radsatz.dae" scale="1 1 1"/>
+            </geometry>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0" rpy="1.570796 0 0"/>
+            <geometry>
+                <mesh filename="package://coupling_detection_gazebo/models/meshes/Radsatz.dae" scale="1 1 1"/>
+            </geometry>
+        </collision>
+        <inertial>
+            <mass value="350"/>
+            <inertia ixx="141.659" iyy="141.659" izz="0.984375" ixy="0" ixz="0" iyz="0"/>
+        </inertial>
+    </link>
+    <gazebo reference="front_bogie_axle1_link">
+        <material>Gazebo/DarkGrey</material>
+        <mu1>0.01</mu1>
+        <mu2>0.01</mu2>
+    </gazebo>
+    
+    <joint name="front_bogie_axle1_link_joint" type="continuous">
+        <parent link="front_bogie_link"/>
+        <child link="front_bogie_axle1_link"/>
+        <origin rpy="-1.570796 0 0" xyz=".9 0 -.4"/>
+        <axis xyz="0 0 1"/>
+        <dynamics damping="0" friction="10"/>
+    </joint>
+    
+    <link name="front_bogie_axle1_wheel_r_link">
+        <collision>
+            <geometry>
+                <cylinder length=".15" radius=".46"/>
+            </geometry>
+        </collision>
+        <inertial>
+            <mass value="400"/>
+            <inertia ixx="21.91" iyy="21.91" izz="42.32" ixy="0" ixz="0" iyz="0"/>
+        </inertial>
+    </link>
+    <gazebo reference="front_bogie_axle1_wheel_r_link">
+        <material>Gazebo/DarkGrey</material>
+    </gazebo>
+    
+    <joint name="front_bogie_axle1_wheel_r_link_joint" type="fixed">
+        <parent link="front_bogie_axle1_link"/>
+        <child link="front_bogie_axle1_wheel_r_link"/>
+        <origin rpy="0 0 0" xyz="0 0 .75"/>
+    </joint>
+    
+    <link name="front_bogie_axle1_wheel_l_link">
+        <collision>
+            <geometry>
+                <cylinder length=".15" radius=".46"/>
+            </geometry>
+        </collision>
+        <inertial>
+            <mass value="400"/>
+            <inertia ixx="21.91" iyy="21.91" izz="42.32" ixy="0" ixz="0" iyz="0"/>
+        </inertial>
+    </link>
+    <gazebo reference="front_bogie_axle1_wheel_l_link">
+        <material>Gazebo/Grey</material>
+        <mu1>0.01</mu1>
+        <mu2>0.01</mu2>
+    </gazebo>
+    
+    <joint name="front_bogie_axle1_wheel_l_link_joint" type="fixed">
+        <parent link="front_bogie_axle1_link"/>
+        <child link="front_bogie_axle1_wheel_l_link"/>
+        <origin rpy="0 0 0" xyz="0 0 -.75"/>
+    </joint>
+    
+    <link name="front_bogie_axle1_guide_r_link">
+        <inertial>
+            <mass value="1"/>
+            <inertia ixx=".0233333" iyy=".0233333" izz=".005" ixy="0" ixz="0" iyz="0"/>
+        </inertial>
+        <collision>
+            <geometry>
+                <cylinder length="0.1" radius=".02"/>
+            </geometry>
+        </collision>
+    </link>
+    
+    <gazebo reference="front_bogie_axle1_guide_r_link">
+        <mu1>0</mu1>
+        <mu2>0</mu2>
+    </gazebo>
+    
+    <joint name="front_bogie_axle1_guide_r_joint" type="continuous">
+        <parent link="front_bogie_link"/>
+        <child link="front_bogie_axle1_guide_r_link"/>
+        <origin rpy="0 0 0" xyz=".9 -.698 -.85"/>
+        <axis xyz="0 0 1"/>
+    </joint>
+    
+    <link name="front_bogie_axle1_guide_l_link">
+        <inertial>
+            <mass value="1"/>
+            <inertia ixx=".0233333" iyy=".0233333" izz=".005" ixy="0" ixz="0" iyz="0"/>
+        </inertial>
+        <collision>
+            <geometry>
+                <cylinder length="0.1" radius=".02"/>
+            </geometry>
+        </collision>
+    </link>
+    
+    <gazebo reference="front_bogie_axle1_guide_l_link">
+        <mu1>0</mu1>
+        <mu2>0</mu2>
+    </gazebo>
+    
+    <joint name="front_bogie_axle1_guide_l_joint" type="continuous">
+        <parent link="front_bogie_link"/>
+        <child link="front_bogie_axle1_guide_l_link"/>
+        <origin rpy="0 0 0" xyz=".9 .698 -.85"/>
+        <axis xyz="0 0 1"/>
+    </joint>
+    
+    <!-- _______________________________________________ DG vorne, Radsatz hinten _______________________________________________ -->
+    <link name="front_bogie_axle2_link">
+        <visual>
+            <origin xyz="0 0 0" rpy="1.570796 0 0"/>
+            <geometry>
+                <mesh filename="package://coupling_detection_gazebo/models/meshes/Radsatz.dae" scale="1 1 1"/>
+            </geometry>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0" rpy="1.570796 0 0"/>
+            <geometry>
+                <mesh filename="package://coupling_detection_gazebo/models/meshes/Radsatz.dae" scale="1 1 1"/>
+            </geometry>
+        </collision>
+        <inertial>
+            <mass value="350"/>
+            <inertia ixx="141.659" iyy="141.659" izz="0.984375" ixy="0" ixz="0" iyz="0"/>
+        </inertial>
+    </link>
+    <gazebo reference="front_bogie_axle2_link">
+        <material>Gazebo/DarkGrey</material>
+    </gazebo>
+    
+    <joint name="front_bogie_axle2_link_joint" type="continuous">
+        <parent link="front_bogie_link"/>
+        <child link="front_bogie_axle2_link"/>
+        <origin rpy="-1.570796 0 0" xyz="-.9 0 -.4"/>
+        <axis xyz="0 0 1"/>
+        <dynamics damping="0" friction="10"/>
+    </joint>
+    
+    <link name="front_bogie_axle2_wheel_r_link">
+        <collision>
+            <geometry>
+                <cylinder length=".15" radius=".46"/>
+            </geometry>
+        </collision>
+        <inertial>
+            <mass value="400"/>
+            <inertia ixx="21.91" iyy="21.91" izz="42.32" ixy="0" ixz="0" iyz="0"/>
+        </inertial>
+    </link>
+    <gazebo reference="front_bogie_axle2_wheel_r_link">
+        <material>Gazebo/DarkGrey</material>
+        <mu1>0.01</mu1>
+        <mu2>0.01</mu2>
+    </gazebo>
+    
+
+
+    <joint name="front_bogie_axle2_wheel_r_link_joint" type="fixed">
+        <parent link="front_bogie_axle2_link"/>
+        <child link="front_bogie_axle2_wheel_r_link"/>
+        <origin rpy="0 0 0" xyz="0 0 .75"/>
+    </joint>
+    
+    <link name="front_bogie_axle2_wheel_l_link">
+        <collision>
+            <geometry>
+                <cylinder length=".15" radius=".46"/>
+            </geometry>
+        </collision>
+        <inertial>
+            <mass value="400"/>
+            <inertia ixx="21.91" iyy="21.91" izz="42.32" ixy="0" ixz="0" iyz="0"/>
+        </inertial>
+    </link>
+    <gazebo reference="front_bogie_axle2_wheel_l_link">
+        <material>Gazebo/DarkGrey</material>
+        <mu1>0.01</mu1>
+        <mu2>0.01</mu2>
+    </gazebo>
+    
+    <joint name="front_bogie_axle2_wheel_l_link_joint" type="fixed">
+        <parent link="front_bogie_axle2_link"/>
+        <child link="front_bogie_axle2_wheel_l_link"/>
+        <origin rpy="0 0 0" xyz="0 0 -.75"/>
+    </joint>
+
+    
+    <link name="front_bogie_axle2_guide_r_link">
+        <inertial>
+            <mass value="1"/>
+            <inertia ixx=".0233333" iyy=".0233333" izz=".005" ixy="0" ixz="0" iyz="0"/>
+        </inertial>
+        <collision>
+            <geometry>
+                <cylinder length="0.1" radius=".02"/>
+            </geometry>
+        </collision>
+    </link>
+    
+    <gazebo reference="front_bogie_axle2_guide_r_link">
+        <mu1>0</mu1>
+        <mu2>0</mu2>
+    </gazebo>
+    
+    <joint name="front_bogie_axle2_guide_r_joint" type="continuous">
+        <parent link="front_bogie_link"/>
+        <child link="front_bogie_axle2_guide_r_link"/>
+        <origin rpy="0 0 0" xyz="-.9 -.698 -.85"/>
+        <axis xyz="0 0 1"/>
+    </joint>
+    
+    <link name="front_bogie_axle2_guide_l_link">
+        <inertial>
+            <mass value="1"/>
+            <inertia ixx=".0233333" iyy=".0233333" izz=".005" ixy="0" ixz="0" iyz="0"/>
+        </inertial>
+        <collision>
+            <geometry>
+                <cylinder length="0.1" radius=".02"/>
+            </geometry>
+        </collision>
+    </link>
+    
+    <gazebo reference="front_bogie_axle2_guide_l_link">
+        <mu1>0</mu1>
+        <mu2>0</mu2>
+    </gazebo>
+    
+    <joint name="front_bogie_axle2_guide_l_joint" type="continuous">
+        <parent link="front_bogie_link"/>
+        <child link="front_bogie_axle2_guide_l_link"/>
+        <origin rpy="0 0 0" xyz="-.9 .698 -.85"/>
+        <axis xyz="0 0 1"/>
+    </joint>
+    
+    <!-- _______________________________________________ Drehgestell hinten _______________________________________________ -->
+    <link name="rear_bogie_link">
+        <visual>
+            <origin xyz="0 0 -0.4" rpy="0 0 0"/>
+            <geometry>
+                <mesh filename="package://coupling_detection_gazebo/models/meshes/Y25_DG_Rahmen.dae" scale="1 1 1"/>
+            </geometry>
+            <material name="silver"/>
+        </visual>
+        <collision>
+            <origin xyz="0 0 -0.4" rpy="0 0 0"/>
+            <geometry>
+                <mesh filename="package://coupling_detection_gazebo/models/meshes/Y25_DG_Rahmen.dae" scale="1 1 1"/>
+            </geometry>
+        </collision>
+        <inertial>
+            <origin xyz="0 0 -0.28" rpy="0 0 0"/>
+            <mass value="2228"/>
+            <inertia ixx="1681" iyy="1691" izz="3270" ixy="0" ixz="0" iyz="0"/>
+        </inertial>
+    </link>
+    
+    <joint name="rear_bogie_joint" type="revolute">
+        <axis xyz="0 0 1"/>
+        <limit lower="-.1745" upper=".1745" effort="1.0" velocity="0.5"/>
+        <parent link="base_link"/>
+        <child link="rear_bogie_link"/>
+        <origin rpy="0 0 0" xyz="-4.5 0 .4"/>
+    </joint>
+
+    <gazebo reference="rear_bogie_link">
+        <mu1>0</mu1>
+        <mu2>0</mu2>
+        <material>Gazebo/Grey</material>
+    </gazebo>
+    
+    <!-- _______________________________________________ DG hinten, Radsatz vorne _______________________________________________ -->
+    <link name="rear_bogie_axle1_link">
+        <visual>
+            <origin xyz="0 0 0" rpy="1.570796 0 0"/>
+            <geometry>
+                <mesh filename="package://coupling_detection_gazebo/models/meshes/Radsatz.dae" scale="1 1 1"/>
+            </geometry>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0" rpy="1.570796 0 0"/>
+            <geometry>
+                <mesh filename="package://coupling_detection_gazebo/models/meshes/Radsatz.dae" scale="1 1 1"/>
+            </geometry>
+        </collision>
+        <inertial>
+            <mass value="350"/>
+            <inertia ixx="141.659" iyy="141.659" izz="0.984375" ixy="0" ixz="0" iyz="0"/>
+        </inertial>
+    </link>
+    <gazebo reference="rear_bogie_axle1_link">
+        <material>Gazebo/DarkGrey</material>
+    </gazebo>
+    
+    <joint name="rear_bogie_axle1_link_joint" type="continuous">
+        <parent link="rear_bogie_link"/>
+        <child link="rear_bogie_axle1_link"/>
+        <origin rpy="-1.570796 0 0" xyz=".9 0 -.4"/>
+        <axis xyz="0 0 1"/>
+        <dynamics damping="0" friction="10"/>
+    </joint>
+    
+    <link name="rear_bogie_axle1_wheel_r_link">
+        <collision>
+            <geometry>
+                <cylinder length=".15" radius=".46"/>
+            </geometry>
+        </collision>
+        <inertial>
+            <mass value="400"/>
+            <inertia ixx="21.91" iyy="21.91" izz="42.32" ixy="0" ixz="0" iyz="0"/>
+        </inertial>
+    </link>
+    <gazebo reference="rear_bogie_axle1_wheel_r_link">
+        <material>Gazebo/DarkGrey</material>
+    </gazebo>
+    
+    <joint name="rear_bogie_axle1_wheel_r_link_joint" type="fixed">
+        <parent link="rear_bogie_axle1_link"/>
+        <child link="rear_bogie_axle1_wheel_r_link"/>
+        <origin rpy="0 0 0" xyz="0 0 .75"/>
+    </joint>
+    
+    <link name="rear_bogie_axle1_wheel_l_link">
+        <collision>
+            <geometry>
+                <cylinder length=".15" radius=".46"/>
+            </geometry>
+        </collision>
+        <inertial>
+            <mass value="400"/>
+            <inertia ixx="21.91" iyy="21.91" izz="42.32" ixy="0" ixz="0" iyz="0"/>
+        </inertial>
+    </link>
+    <gazebo reference="rear_bogie_axle1_wheel_l_link">
+        <material>Gazebo/DarkGrey</material>
+    </gazebo>
+    
+    <joint name="rear_bogie_axle1_wheel_l_link_joint" type="fixed">
+        <parent link="rear_bogie_axle1_link"/>
+        <child link="rear_bogie_axle1_wheel_l_link"/>
+        <origin rpy="0 0 0" xyz="0 0 -.75"/>
+    </joint>
+    
+    <link name="rear_bogie_axle1_guide_r_link">
+        <inertial>
+            <mass value="1"/>
+            <inertia ixx=".0233333" iyy=".0233333" izz=".005" ixy="0" ixz="0" iyz="0"/>
+        </inertial>
+        <collision>
+            <geometry>
+                <cylinder length="0.1" radius=".02"/>
+            </geometry>
+        </collision>
+    </link>
+    
+    <gazebo reference="rear_bogie_axle1_guide_r_link">
+        <mu1>0</mu1>
+        <mu2>0</mu2>
+    </gazebo>
+    
+    <joint name="rear_bogie_axle1_guide_r_joint" type="continuous">
+        <parent link="rear_bogie_link"/>
+        <child link="rear_bogie_axle1_guide_r_link"/>
+        <origin rpy="0 0 0" xyz=".9 -.698 -.85"/>
+        <axis xyz="0 0 1"/>
+    </joint>
+    
+    <link name="rear_bogie_axle1_guide_l_link">
+        <inertial>
+            <mass value="1"/>
+            <inertia ixx=".0233333" iyy=".0233333" izz=".005" ixy="0" ixz="0" iyz="0"/>
+        </inertial>
+        <collision>
+            <geometry>
+                <cylinder length="0.1" radius=".02"/>
+            </geometry>
+        </collision>
+    </link>
+    
+    <gazebo reference="rear_bogie_axle1_guide_l_link">
+        <mu1>0</mu1>
+        <mu2>0</mu2>
+    </gazebo>
+    
+    <joint name="rear_bogie_axle1_guide_l_joint" type="continuous">
+        <parent link="rear_bogie_link"/>
+        <child link="rear_bogie_axle1_guide_l_link"/>
+        <origin rpy="0 0 0" xyz=".9 .698 -.85"/>
+        <axis xyz="0 0 1"/>
+    </joint>
+    
+    <!-- _______________________________________________ DG hinten, Radsatz hinten _______________________________________________ -->
+    <link name="rear_bogie_axle2_link">
+        <visual>
+            <origin xyz="0 0 0" rpy="1.570796 0 0"/>
+            <geometry>
+                <mesh filename="package://coupling_detection_gazebo/models/meshes/Radsatz.dae" scale="1 1 1"/>
+            </geometry>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0" rpy="1.570796 0 0"/>
+            <geometry>
+                <mesh filename="package://coupling_detection_gazebo/models/meshes/Radsatz.dae" scale="1 1 1"/>
+            </geometry>
+        </collision>
+        <inertial>
+            <mass value="350"/>
+            <inertia ixx="141.659" iyy="141.659" izz="0.984375" ixy="0" ixz="0" iyz="0"/>
+        </inertial>
+    </link>
+    <gazebo reference="rear_bogie_axle2_link">
+        <material>Gazebo/DarkGrey</material>
+    </gazebo>
+    
+    <joint name="rear_bogie_axle2_link_joint" type="continuous">
+        <parent link="rear_bogie_link"/>
+        <child link="rear_bogie_axle2_link"/>
+        <origin rpy="-1.570796 0 0" xyz="-.9 0 -0.4"/>
+        <axis xyz="0 0 1"/>
+        <dynamics damping="0" friction="10"/>
+    </joint>
+    
+    <link name="rear_bogie_axle2_wheel_r_link">
+        <collision>
+            <geometry>
+                <cylinder length=".15" radius=".46"/>
+            </geometry>
+        </collision>
+        <inertial>
+            <mass value="400"/>
+            <inertia ixx="21.91" iyy="21.91" izz="42.32" ixy="0" ixz="0" iyz="0"/>
+        </inertial>
+    </link>
+    <gazebo reference="rear_bogie_axle2_wheel_r_link">
+        <material>Gazebo/DarkGrey</material>
+    </gazebo>
+    
+    <joint name="rear_bogie_axle2_wheel_r_link_joint" type="fixed">
+        <parent link="rear_bogie_axle2_link"/>
+        <child link="rear_bogie_axle2_wheel_r_link"/>
+        <origin rpy="0 0 0" xyz="0 0 .75"/>
+    </joint>
+    
+    <link name="rear_bogie_axle2_wheel_l_link">
+        <collision>
+            <geometry>
+                <cylinder length=".15" radius=".46"/>
+            </geometry>
+        </collision>
+        <inertial>
+            <mass value="400"/>
+            <inertia ixx="21.91" iyy="21.91" izz="42.32" ixy="0" ixz="0" iyz="0"/>
+        </inertial>
+    </link>
+    <gazebo reference="rear_bogie_axle2_wheel_l_link">
+        <material>Gazebo/DarkGrey</material>
+    </gazebo>
+    
+    <joint name="rear_bogie_axle2_wheel_l_link_joint" type="fixed">
+        <parent link="rear_bogie_axle2_link"/>
+        <child link="rear_bogie_axle2_wheel_l_link"/>
+        <origin rpy="0 0 0" xyz="0 0 -.75"/>
+    </joint>
+
+    
+    <link name="rear_bogie_axle2_guide_r_link">
+        <inertial>
+            <mass value="1"/>
+            <inertia ixx=".0233333" iyy=".0233333" izz=".005" ixy="0" ixz="0" iyz="0"/>
+        </inertial>
+        <collision>
+            <geometry>
+                <cylinder length="0.1" radius=".02"/>
+            </geometry>
+        </collision>
+    </link>
+    
+    <gazebo reference="rear_bogie_axle2_guide_r_link">
+        <mu1>0</mu1>
+        <mu2>0</mu2>
+    </gazebo>
+    
+    <joint name="rear_bogie_axle2_guide_r_joint" type="continuous">
+        <parent link="rear_bogie_link"/>
+        <child link="rear_bogie_axle2_guide_r_link"/>
+        <origin rpy="0 0 0" xyz="-.9 -.698 -.85"/>
+        <axis xyz="0 0 1"/>
+    </joint>
+    
+    <link name="rear_bogie_axle2_guide_l_link">
+        <inertial>
+            <mass value="1"/>
+            <inertia ixx=".0233333" iyy=".0233333" izz=".005" ixy="0" ixz="0" iyz="0"/>
+        </inertial>
+        <collision>
+            <geometry>
+                <cylinder length="0.1" radius=".02"/>
+            </geometry>
+        </collision>
+    </link>
+    
+    <gazebo reference="rear_bogie_axle2_guide_l_link">
+        <mu1>0</mu1>
+        <mu2>0</mu2>
+    </gazebo>
+    
+    <joint name="rear_bogie_axle2_guide_l_joint" type="continuous">
+        <parent link="rear_bogie_link"/>
+        <child link="rear_bogie_axle2_guide_l_link"/>
+        <origin rpy="0 0 0" xyz="-.9 .698 -.85"/>
+        <axis xyz="0 0 1"/>
+    </joint>
+    
+</robot>

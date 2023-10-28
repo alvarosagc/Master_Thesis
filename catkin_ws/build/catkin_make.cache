@@ -1,0 +1,2 @@
+read_pcd
+-DCATKIN_DEVEL_PREFIX=/home/alvarosantamaria/catkin_ws/devel -DCMAKE_INSTALL_PREFIX=/home/alvarosantamaria/catkin_ws/install -DCATKIN_WHITELIST_PACKAGES=read_pcd -G Unix Makefiles

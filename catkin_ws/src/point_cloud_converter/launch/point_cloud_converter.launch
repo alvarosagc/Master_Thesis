@@ -1,0 +1,11 @@
+
+<launch>
+	<node pkg="point_cloud_converter" name="point_cloud_converter" type="point_cloud_converter_node" >
+		<remap from="points_in" to="/rotrac_e2/laser_rear/scan"/>
+		<remap from="points2_out" to="introduce_PCL2topic" />
+		<!--
+		<remap from="points2_in" to="velodyne_points"/>
+		<remap from="points_out" to="velodyne_points" />
+		-->
+	</node>
+</launch>
